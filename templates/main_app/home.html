@@ -1,0 +1,41 @@
+{% extends 'core/base.html' %}
+{% block title %}Home{% endblock title %}
+{% block content %} 
+<hr style="border:solid">
+{% for todo in todos %}
+<div style="text-align:center; border-style: double;" >
+  <br>  
+<h4 >
+    Title: {{todo.title}}
+</h4> 
+    <hr>   
+    <br>
+<h5>
+    Description: {{todo.description}}
+</h5> 
+    <br>
+    
+<p>
+    Date: {{todo.date_posted}}
+</p> 
+    <br>
+    <a href="{% url 'delete' id=todo.id %}">
+    <button type="button" class="btn btn-danger">Delete</button>
+    </a>
+    <a href="{% url 'edit' id=todo.id %}">
+    <button type="button" class="btn btn-success">Edit</button> 
+    </a>
+    <br><br>
+</div>  
+{% endfor %}
+
+<hr style="color:black">
+<center>
+<a href="{% url 'add' %}">
+<button  class="btn btn-primary">Add</button>
+</a>
+<a href="{% url 'delete-all' %}">
+    <button  class="btn btn-danger">DELETE-ALL</button>
+    </a>
+</center>
+{% endblock content %}
